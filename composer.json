@@ -1,0 +1,27 @@
+{
+  "name": "liugene/linkphp",
+  "type": "project",
+  "license": "Apache2",
+  "description": "php Web mvc/api框架 ",
+  "keywords": ["framework","linkphp","MVC","api"],
+  "authors": [
+    {
+      "name": "liugene",
+      "email": "liujun2199@vip.qq.com"
+    }
+  ],
+  "repositories": {
+    	"packagist": {
+        	"type": "composer",
+        	"url": "https://packagist.phpcomposer.com"
+    	}
+	},
+  "require":{
+    "php": "^5.4 || ^7.0",
+    "linkphp/link-api":"dev-master",
+    "linkphp/link-temp":"dev-master",
+    "phpunit/phpunit": "4.8.*",
+    "smarty/smarty": "^3.1",
+    "flc/alidayu": "2.*"
+  }
+}

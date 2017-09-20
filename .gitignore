@@ -1,0 +1,6 @@
+.idea/
+vendor/
+assets/index/controllers/
+assets/index/models/
+composer.lock
+web/resource/
