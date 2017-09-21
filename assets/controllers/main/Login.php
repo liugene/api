@@ -9,17 +9,17 @@
 // +----------------------------------------------------------------------
 // | Author: liugene <liujun2199@vip.qq.com>
 // +----------------------------------------------------------------------
-// |               站点应用入口文件
+// |               配置类
 // +----------------------------------------------------------------------
+namespace assets\controllers\main;
+use linkphp\system\db\Db;
 
- // 定义应用目录
- define('APPLICATION_PATH', dirname(__DIR__) . '/assets/');
- define('APP_INTERFACE_ON',true);
- //加载LinkPHP框架常量文件
- require(dirname(__DIR__) . '/framework/define.php');
- //加载LinkPHP框架启动文件
- require(dirname(__DIR__) . '/framework/bootstrap.php');
+class Login
+{
+    //注册
+    static public function reg()
+    {
+    }
 
- //只需要这么几句话就可以运行 !><!
- //是不是很轻便呀 喵~
- 
+    static public function Login(){}
+}
