@@ -26,7 +26,11 @@ class LoginData
 
     static public function register()
     {
+        $data['pass_word'] = $_POST['account'];
+        $data['user_name'] = $_POST['password1'];
+        $data['reg_time'] = date('Y-m-d H:i:s',time());
+        var_dump($data);die;
         return Db::table('lp_user')
-            ->insert();
+            ->insert($data);
     }
 }
