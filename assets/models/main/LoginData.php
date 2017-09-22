@@ -19,7 +19,7 @@ class LoginData
     static public function check()
     {
         return Db::table('lp_user')
-            ->where("where user_name = '" . $_POST['account'] . "' and pass_word = '" . md5(md5($_POST['password'])) . "')
+            ->where("where user_name = '" . $_POST['account'] . "' and pass_word = '" . md5(md5($_POST['password'])) . "'")
             ->find();
     }
 }
