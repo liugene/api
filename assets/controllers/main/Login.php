@@ -24,9 +24,9 @@ class Login
     {
         header("Access-Control-Allow-Origin:*");
         if(LoginData::check()){
-            return json_encode(['code' => 1, 'msg' => '登入成功!'], JSON_UNESCAPED_UNICODE);
+            echo json_encode(['code' => 1, 'msg' => '登入成功!'], JSON_UNESCAPED_UNICODE);
         } else {
-            return json_encode(['code' => 2, 'msg' => '登入失败!'], JSON_UNESCAPED_UNICODE);
+            echo json_encode(['code' => 2, 'msg' => '登入失败!'], JSON_UNESCAPED_UNICODE);
         }
     }
 }
