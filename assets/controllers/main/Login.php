@@ -20,6 +20,11 @@ class Login
     static public function reg()
     {
         header("Access-Control-Allow-Origin:*");
+        if($_POST['password1'] !== $_POST['password2'])
+        {
+            echo json_encode(['code' => 2, 'msg' => '两次密码不一致!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
         if(LoginData::register()){
             echo json_encode(['code' => 1, 'msg' => '注册成功!'], JSON_UNESCAPED_UNICODE);
         } else {

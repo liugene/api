@@ -26,7 +26,6 @@ class LoginData
 
     static public function register()
     {
-        var_dump($_POST);die;
         return Db::table('lp_user')
             ->insert();
     }
