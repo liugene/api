@@ -103,7 +103,7 @@ class Db
 
     private function freeFunc()
     {
-        $this->_function = array(
+        static::$_function = array(
             'table' => '',
             'group' => '',
             'join' => '',
