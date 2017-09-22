@@ -25,7 +25,6 @@ class Login
             echo json_encode(['code' => 2, 'msg' => '两次密码不一致!'], JSON_UNESCAPED_UNICODE);
             die;
         }
-        dump(LoginData::register());die;
         if(LoginData::register()){
             echo json_encode(['code' => 1, 'msg' => '注册成功!'], JSON_UNESCAPED_UNICODE);
         } else {

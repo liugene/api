@@ -164,6 +164,7 @@ class Mysql
     //调价添加语句封装方法
     public function insert($sql)
     {
+        var_dump($sql);die;
         if ($sql == '') {
             $this->getError('SQL语句为空');
         } else {
