@@ -190,8 +190,10 @@ class Mysql
     public function getOne($sql)
     {
         $result = $this->query($sql);
-        $result = mysqli_fetch_assoc($result);
-        return $result;
+        if(!$result){
+            return false;
+        }
+        return $result = mysqli_fetch_assoc($result);
     }
 
     //获取最近一次SQL操作语句ID

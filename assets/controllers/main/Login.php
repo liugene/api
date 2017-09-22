@@ -18,8 +18,7 @@ class Login
 {
     //注册
     static public function reg()
-    {
-    }
+    {}
 
     static public function Login()
     {
