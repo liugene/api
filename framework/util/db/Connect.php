@@ -11,22 +11,6 @@
 // +----------------------------------------------------------------------
 // |               配置类
 // +----------------------------------------------------------------------
-namespace assets\controllers\main;
-use assets\models\main\LoginData;
+namespace util\db;
 
-class Login
-{
-    //注册
-    static public function reg()
-    {
-    }
-
-    static public function Login()
-    {
-        if(LoginData::check()){
-            return json_encode(['code' => 1, 'msg' => '登入成功!'], JSON_UNESCAPED_UNICODE);
-        } else {
-            return json_encode(['code' => 2, 'msg' => '登入失败!'], JSON_UNESCAPED_UNICODE);
-        }
-    }
-}
+class Connect{}

@@ -12,8 +12,8 @@
 // |               数据库语句解释器
 // +----------------------------------------------------------------------
 
-namespace linkphp\system\db;
-use linkphp\system\db\Drives;
+namespace util\db;
+use util\db\Drives;
 class Db
 {
 

@@ -1,7 +1,7 @@
 <?php
 namespace assets\controllers\main;
 use linkphp\boot\Api;
-use linkphp\system\db\Db;;
+use util\db\Db;;
 class Home extends Api
 {
 	public function main()
