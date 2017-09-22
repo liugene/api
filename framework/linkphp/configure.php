@@ -52,7 +52,7 @@
   
   
   //站点调试
-  'app_debug'            => false, //是否打开调试功能
+  'app_debug'            => true, //是否打开调试功能
 
   //系统安全配置
   'token_turn_on'        => false, //是否打开表单令牌验证

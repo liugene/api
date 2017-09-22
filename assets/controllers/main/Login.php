@@ -23,6 +23,7 @@ class Login
 
     static public function Login()
     {
+        var_dump($_POST);die;
         if(LoginData::check()){
             return json_encode(['code' => 1, 'msg' => '登入成功!'], JSON_UNESCAPED_UNICODE);
         } else {
