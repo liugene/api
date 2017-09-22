@@ -18,7 +18,14 @@ class Login
 {
     //注册
     static public function reg()
-    {}
+    {
+        header("Access-Control-Allow-Origin:*");
+        if(LoginData::register()){
+            echo json_encode(['code' => 1, 'msg' => '注册成功!'], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(['code' => 2, 'msg' => '注册失败!'], JSON_UNESCAPED_UNICODE);
+        }
+    }
 
     static public function Login()
     {

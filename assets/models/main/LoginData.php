@@ -23,4 +23,11 @@ class LoginData
             ->where("where user_name = '" . $_POST['account'] . "' and pass_word = '" . md5(md5($_POST['password'])) . "'")
             ->find();
     }
+
+    static public function register()
+    {
+        var_dump($_POST);die;
+        return Db::table('lp_user')
+            ->insert();
+    }
 }
