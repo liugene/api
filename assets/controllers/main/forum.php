@@ -19,6 +19,10 @@ class Forum
     static public function getList()
     {
         header("Access-Control-Allow-Origin:*");
+        if(!$_POST){
+            echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
         if(!empty(ForumData::getForumData())){
             echo json_encode(['code' => 1, 'data' => ForumData::getForumData()], JSON_UNESCAPED_UNICODE);
         } else {
@@ -29,6 +33,11 @@ class Forum
     static public function push()
     {
         header("Access-Control-Allow-Origin:*");
+        var_dump($_POST);die;
+        if(!$_POST){
+            echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
         if(ForumData::pushData()){
             echo json_encode(['code' => 1, 'msg' => '发帖成功!'], JSON_UNESCAPED_UNICODE);
         } else {
