@@ -42,4 +42,12 @@ class ForumData
             return $e->getMessage();
         }
     }
+
+    static public function getItemsData()
+    {
+        return Db::table('lp_forum')
+            ->field('*')
+            ->where("where f_id = " . $_POST['id'])
+            ->find();
+    }
 }

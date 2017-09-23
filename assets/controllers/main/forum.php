@@ -43,4 +43,18 @@ class Forum
             echo json_encode(['code' => 2, 'msg' => '发布失败!'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    static public function getItems()
+    {
+        header("Access-Control-Allow-Origin:*");
+        if(!$_POST){
+            echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
+        if(!empty(ForumData::getItemsData())){
+            echo json_encode(['code' => 1, 'data' => ForumData::getItemsData()], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
+        }
+    }
 }
