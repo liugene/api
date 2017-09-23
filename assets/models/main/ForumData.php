@@ -33,7 +33,7 @@ class ForumData
             $data['post_time'] = date('Y-m-d',time());
             $res['f_id'] = Db::table('lp_forum')
                 ->insert($data);
-            var_dump($res);die;
+            var_dump($data);die;
             $res['content'] = $_POST['desc'];
             $res['u_id'] = 2;
             $res['post_time'] = date('Y-m-d H:i:s',time());
