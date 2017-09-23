@@ -26,6 +26,7 @@ class ForumData
 
     static public function pushData()
     {
+        var_dump($_POST);die;
         try{
             $data['title'] = $_POST['title'];
             $data['c_id'] = $_POST['type'];

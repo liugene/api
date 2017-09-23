@@ -33,7 +33,6 @@ class Forum
     static public function push()
     {
         header("Access-Control-Allow-Origin:*");
-        var_dump($_POST);die;
         if(!$_POST){
             echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
             die;
