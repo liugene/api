@@ -105,7 +105,6 @@ class Db
             //字段为字符串是直接拼接数据库插入语句
             $sql = "INSERT INTO " . static::$_function['table'] . " ( array_keys($data) ) VALUES ( '".array_values($data)."')";
         }
-        var_dump($sql);die;
         $result = static::$_dao->insert($sql);
         return $result;
     }
