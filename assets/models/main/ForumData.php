@@ -28,12 +28,12 @@ class ForumData
     {
         try{
             $data['title'] = $_POST['title'];
-            $data['c_id'] = $_POST['type'];
+            $data['c_id'] = 1;
             $data['u_id'] = 2;
             $data['post_time'] = date('Y-m-d',time());
             $res['f_id'] = Db::table('lp_forum')
                 ->insert($data);
-            var_dump($data);die;
+            var_dump($res);die;
             $res['content'] = $_POST['desc'];
             $res['u_id'] = 2;
             $res['post_time'] = date('Y-m-d H:i:s',time());
