@@ -181,7 +181,6 @@ class Mysql
     //获得所有查询结果
     public function getAll($sql)
     {
-        var_dump(mysqli_fetch_all($this->query($sql)), MYSQLI_ASSOC);die;
         $result = mysqli_fetch_all($this->query($sql), MYSQLI_ASSOC);
         return $result;
     }
