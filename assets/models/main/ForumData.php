@@ -50,4 +50,13 @@ class ForumData
             ->where("where f_id = " . $_POST['id'])
             ->find();
     }
+
+    static public function getTypeData()
+    {
+        $res = Db::table('lp_forum')
+            ->field('*')
+            ->where('where p_id = 0')
+            ->select();
+        var_dump($res);die;
+    }
 }
