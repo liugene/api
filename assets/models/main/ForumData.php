@@ -61,7 +61,7 @@ class ForumData
             foreach($res as $k => $v){
                 $res['child'][] = Db::table('lp_class')
                     ->field('*')
-                    ->where('where p_id = ' . $res['id'])
+                    ->where('where p_id = ' . $v['id'])
                     ->select();
             }
         }
