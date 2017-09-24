@@ -57,6 +57,14 @@ class ForumData
             ->field('*')
             ->where('where p_id = 0')
             ->select();
+        if(is_array($res) && !empty($res)){
+            foreach($res as $k => $v){
+                $res['child'][] = Db::table('lp_class')
+                    ->field('*')
+                    ->where('where p_id = ' . $res['id'])
+                    ->select();
+            }
+        }
         var_dump($res);die;
     }
 }
