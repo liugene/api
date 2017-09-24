@@ -53,7 +53,7 @@ class ForumData
 
     static public function getTypeData()
     {
-        $res = Db::table('lp_forum')
+        $res = Db::table('lp_class')
             ->field('*')
             ->where('where p_id = 0')
             ->select();
