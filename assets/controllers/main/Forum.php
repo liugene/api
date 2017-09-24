@@ -71,4 +71,14 @@ class Forum
             echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    static public function getChildType()
+    {
+        header("Access-Control-Allow-Origin:*");
+        if(!empty(ForumData::getChildTypeData())){
+            echo json_encode(['code' => 1, 'data' => ForumData::getChildTypeData()], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
+        }
+    }
 }

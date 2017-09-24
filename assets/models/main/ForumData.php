@@ -67,4 +67,21 @@ class ForumData
         }
         return $res;
     }
+
+    static public function getChildTypeData()
+    {
+        $res = Db::table('lp_class')
+            ->field('*')
+            ->where('where p_id = 0')
+            ->select();
+        if(is_array($res) && !empty($res)){
+            foreach($res as $k => $v){
+                $child[$k] = Db::table('lp_class')
+                    ->field('*')
+                    ->where('where p_id = ' . $v['id'])
+                    ->select();
+            }
+        }
+        return $child;
+    }
 }
