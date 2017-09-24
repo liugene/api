@@ -65,6 +65,6 @@ class ForumData
                     ->select();
             }
         }
-        return $res
+        return $res;
     }
 }
