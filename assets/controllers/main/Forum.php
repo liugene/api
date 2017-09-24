@@ -65,8 +65,8 @@ class Forum
     static public function getType()
     {
         header("Access-Control-Allow-Origin:*");
-        if(!empty(ForumData::getItemsData())){
-            echo json_encode(['code' => 1, 'data' => ForumData::getItemsData()], JSON_UNESCAPED_UNICODE);
+        if(!empty(ForumData::getTypeData())){
+            echo json_encode(['code' => 1, 'data' => ForumData::getTypeData()], JSON_UNESCAPED_UNICODE);
         } else {
             echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
         }
