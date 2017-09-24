@@ -59,7 +59,7 @@ class ForumData
             ->select();
         if(is_array($res) && !empty($res)){
             foreach($res as $k => $v){
-                $res['child'][] = Db::table('lp_class')
+                $res[$k]['cid'] = Db::table('lp_class')
                     ->field('*')
                     ->where('where p_id = ' . $v['id'])
                     ->select();
