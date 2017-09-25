@@ -18,7 +18,6 @@ class Blog
 {
     static public function getLists()
     {
-        header("Access-Control-Allow-Origin:*");
         if(!empty(BlogData::getListData())){
             echo json_encode(['code' => 1, 'data' => BlogData::getListData()], JSON_UNESCAPED_UNICODE);
         } else {

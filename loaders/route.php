@@ -1,5 +1,6 @@
 <?php
 
+header("Access-Control-Allow-Origin:*");
 return [
     //默认分发参数配置
     '__APP__'            => APPLICATION_PATH,
