@@ -24,4 +24,15 @@ class Blog
             echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
         }
     }
+
+    //获取近期文章
+    static public function getNewItems()
+    {
+        if(!empty(BlogData::getNewItemsData())){
+            echo json_encode(['code' => 1, 'data' => BlogData::getNewItemsData()], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(['code' => 2, 'data' => '暂时没有数据!'], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
 }

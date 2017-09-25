@@ -23,4 +23,12 @@ class BlogData
             ->where('where is_on = 0')
             ->select();
     }
+
+    static public function getNewItemsData()
+    {
+        return Db::table('lp_blog')
+            ->field('*')
+            ->where('where is_on = 0')
+            ->select();
+    }
 }
