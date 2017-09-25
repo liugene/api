@@ -18,7 +18,6 @@ class Notices
 {
     static public function getNotices()
     {
-        header("Access-Control-Allow-Origin:*");
         if(!empty(NoticesData::getNoticesData())){
             echo json_encode(['code' => 1, 'data' => NoticesData::getNoticesData()], JSON_UNESCAPED_UNICODE);
         } else {

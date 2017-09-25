@@ -19,7 +19,6 @@ class Login
     //注册
     static public function reg()
     {
-        header("Access-Control-Allow-Origin:*");
         if(!$_POST){
             echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
             die;
@@ -49,7 +48,6 @@ class Login
 
     static public function Login()
     {
-        header("Access-Control-Allow-Origin:*");
         if(!$_POST){
             echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
             die;
