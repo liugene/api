@@ -15,6 +15,5 @@ return [
     'route_rules'        => array(
         '/Index/Index'   =>  '/Index/Api',
     ),
-]
+];
 
-?>
