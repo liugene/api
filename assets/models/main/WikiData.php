@@ -24,7 +24,7 @@ class WikiData
             ->select();
         if(is_array($res) && !empty($res)){
             foreach($res as $k => $v){
-                $res[$k]['cid'] = Db::table('lp_class')
+                $res[$k]['cid'] = Db::table('lp_wiki')
                     ->field('*')
                     ->where('where p_id = ' . $v['id'])
                     ->select();
