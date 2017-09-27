@@ -1,16 +1,19 @@
 <?php
 namespace assets\controllers\main;
 use assets\models\main\HomeData;
+use util\jwt\Jwt;
 
 class Home
 {
 	public function main()
     {
-        if(!$_POST){
-            echo json_encode(['code' => 304, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
-            die;
-        }
-        phpinfo();
+
+        $data = ['user_id' => 1, 'email' => '750688237@qq.com'];
+        $key = '123';
+        var_dump(Jwt::sign($data,$key));
+        var_dump(Jwt::parse(Jwt::sign($data,$key)));
+        var_dump(Jwt::verify(Jwt::parse(Jwt::sign($data,$key)),$key));
+//        phpinfo();
     }
 
     static public function getItems()
