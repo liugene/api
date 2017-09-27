@@ -1,6 +1,8 @@
 <?php
 
 header("Access-Control-Allow-Origin:*");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Methods: GET, POST, PUT,DELETE');
 return [
     //默认分发参数配置
     '__APP__'            => APPLICATION_PATH,
