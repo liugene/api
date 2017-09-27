@@ -62,7 +62,6 @@ class Login
             die;
         }
         if($result = LoginData::check()){
-            var_dump(Jwt::sign(['user_id' => $result['id'], 'username' => $result['user_name']],'123'), JSON_UNESCAPED_UNICODE));
             echo json_encode(['code' => 1, 'msg' => '登入成功!','data' => Jwt::sign(['user_id' => $result['id'], 'username' => $result['user_name']],'123')], JSON_UNESCAPED_UNICODE);
         } else {
             echo json_encode(['code' => 2, 'msg' => '登入失败!'], JSON_UNESCAPED_UNICODE);
