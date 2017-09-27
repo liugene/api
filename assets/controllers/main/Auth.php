@@ -18,9 +18,8 @@ class Auth
 {
     static public function isLogin()
     {
-        var_dump($_SERVER);die;
-        if(isset($_SERVER['authorization'])){
-            $data = Jwt::parse($_SERVER['authorization']);
+        if(isset($_SERVER['HTTP_AUTHORIZATION'])){
+            $data = Jwt::parse($_SERVER['HTTP_AUTHORIZATION']);
             if(Jwt::verify($data,'123')){
                 echo json_encode(['code' => 1, 'data' => Jwt::arrays($data['payload'])], JSON_UNESCAPED_UNICODE);
             } else {
