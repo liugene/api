@@ -13,6 +13,7 @@
 // +----------------------------------------------------------------------
 namespace assets\controllers\main;
 use assets\models\main\LoginData;
+use util\jwt\Jwt;
 
 class Login
 {
@@ -60,8 +61,8 @@ class Login
             echo json_encode(['code' => 2, 'msg' => '密码不能为空!'], JSON_UNESCAPED_UNICODE);
             die;
         }
-        if(LoginData::check()){
-            echo json_encode(['code' => 1, 'msg' => '登入成功!'], JSON_UNESCAPED_UNICODE);
+        if($result = LoginData::check()){
+            echo json_encode(['code' => 1, 'msg' => '登入成功!','data' => Jwt::sign(['user_id' => $result['id'], 'username' => $result['user_name']],'123')], JSON_UNESCAPED_UNICODE);
         } else {
             echo json_encode(['code' => 2, 'msg' => '登入失败!'], JSON_UNESCAPED_UNICODE);
         }

@@ -21,8 +21,8 @@ class Jwt
     {
         $data = [];
         list($header,$payload,$signature) = explode('.',$string);
-        $data['header'] = static::arrays(static::decodeUrlByBase64($header));
-        $data['payload'] = static::arrays(static::decodeUrlByBase64($payload));
+        $data['header'] = static::decodeUrlByBase64($header);
+        $data['payload'] = static::decodeUrlByBase64($payload);
         $data['signature'] = $string;
         return $data;
     }
@@ -41,7 +41,7 @@ class Jwt
     //sign验证
     static public function verify($data,$key)
     {
-        $sign = static::sign($data['payload'],$key);
+        $sign = static::sign(static::arrays($data['payload']),$key);
         if (function_exists('hash_equals')) {
             return hash_equals($data['signature'], $sign);
         }
@@ -69,6 +69,6 @@ class Jwt
     //json to array 数据
     static public function arrays($json)
     {
-        return json_decode($json,false, 512, JSON_BIGINT_AS_STRING);
+        return json_decode($json,true, 512, JSON_BIGINT_AS_STRING);
     }
 }
