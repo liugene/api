@@ -18,6 +18,7 @@ class Auth
 {
     static public function isLogin()
     {
+        var_dump($_SERVER);die;
         if(isset($_SERVER['authorization'])){
             $data = Jwt::parse($_SERVER['authorization']);
             if(Jwt::verify($data,'123')){
