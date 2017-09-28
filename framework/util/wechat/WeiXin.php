@@ -26,7 +26,7 @@ class WeiXin{
                $echostr = $_GET['echostr'];
 
                //把这三个参数存到一个数组里面
-               $tmpArr = array($timestamp,$nonce,TOKEN);
+               $tmpArr = array($timestamp,$nonce,'linkphpcn');
                //进行字典排序
                sort($tmpArr);
 
