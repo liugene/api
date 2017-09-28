@@ -19,18 +19,23 @@ class WeiXin{
        {
            if(isset($_GET['nonce']) && isset($_GET['timestamp']) && isset($_GET['signature']) && isset($_GET['echostr'])){
                //获得参数 signatrue token timestamp echostr
-               $nonce     = $_GET['nonce'];
-               $token     = 'linkphpcn';
-               $timestamp = $_GET['timestamp'];
-               $echostr   = $_GET['echostr'];
+               //先获取到这三个参数
                $signature = $_GET['signature'];
-               //形成数组。然后按字典序排序
-               $array = array($nonce,$timestamp,$token);
-               sort($array);
-               $str = implode('',$array);
-               //拼接成字符串，使用sha1加密，然后与signatrue进行校验
-               $sign = sha1($str);
-               if($sign == $signature){
+               $nonce = $_GET['nonce'];
+               $timestamp = $_GET['timestamp'];
+               $echostr = $_GET['echostr'];
+
+               //把这三个参数存到一个数组里面
+               $tmpArr = array($timestamp,$nonce,TOKEN);
+               //进行字典排序
+               sort($tmpArr);
+
+               //把数组中的元素合并成字符串，impode()函数是用来将一个数组合并成字符串的
+               $tmpStr = implode($tmpArr);
+
+               //sha1加密，调用sha1函数
+               $tmpStr = sha1($tmpStr);
+               if($tmpStr == $signature){
                    echo $echostr;
                    exit;
                } else {
