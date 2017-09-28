@@ -30,7 +30,7 @@ class WeiXin{
                $str = implode('',$array);
                //拼接成字符串，使用sha1加密，然后与signatrue进行校验
                $sign = sha1($str);
-               if($sign === $signature){
+               if($sign == $signature){
                    echo $echostr;
                    exit;
                } else {
