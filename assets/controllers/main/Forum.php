@@ -27,7 +27,6 @@ class Forum
 
     static public function push()
     {
-        var_dump($_POST['desc']);die;
         if(!$_POST){
             echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
             die;
@@ -36,7 +35,7 @@ class Forum
             echo json_encode(['code' => 2, 'msg' => '帖子标题不能为空!'], JSON_UNESCAPED_UNICODE);
             die;
         }
-        if($_POST['type'] == '' || $_POST['password2'] == ''){
+        if($_POST['type'] == ''){
             echo json_encode(['code' => 2, 'msg' => '帖子类型不能为空!'], JSON_UNESCAPED_UNICODE);
             die;
         }
