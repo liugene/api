@@ -26,8 +26,8 @@ class WeiXin{
                $signature = $_GET['signature'];
                //形成数组。然后按字典序排序
                $array = [$nonce,$timestamp,$token];
-               $str = implode($array);
                sort($str, SORT_STRING);
+               $str = implode($array);
                //拼接成字符串，使用sha1加密，然后与signatrue进行校验
                $str = sha1($str);
                if($str === $signature){
