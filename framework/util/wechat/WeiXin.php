@@ -15,21 +15,20 @@ namespace util\wechat;
 
 class WeiXin{
 
-       public function index()
+       static public function verify()
        {
              //获得参数 signatrue token timestamp echostr
              $nonce     = $_GET['nonce'];
-             $token     = 'Linkphp';
+             $token     = 'linkphpcn';
              $timestamp = $_GET['timestamp'];
              $echostr   = $_GET['echostr'];
-             $signatrue = $_GET['signat  rue'];
+             $signature = $_GET['signature'];
              //形成数组。然后按字典序排序
-             $array = array();
-             $array = array($nonce,$timestamp,$token);
+             $array = [$nonce,$timestamp,$token];
              sort($array);
              //拼接成字符串，使用sha1加密，然后与signatrue进行校验
-             $str = sha1(implode($array));
-             if($str == $signatrue){
+             $str = sha1(implode('',$array));
+             if(strcmp($str,$signature)){
                  echo $echostr;
                  exit;
              }
@@ -209,5 +208,3 @@ class WeiXin{
        }
 }
 
-
-?>

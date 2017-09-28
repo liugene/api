@@ -13,13 +13,7 @@
  */
 
 return [
-    'host'     => '47.52.30.103', //一般不需要修改
-    'port'     => '1433', //默认即可
-    'dbuser'   => 'sa', //数据库用户名
-    'dbpwd'    => 'JRadmin123', //数据库密码
-    'charset'  => 'utf8', //数据库编码
-    'dbname'   => 'AEGCRM', //数据库名称
-    'dbprefix' => 'AEG_', //数据库表前缀
-]
+    'wx_secret'  => 'cf2b03ccbd971297e00d71c02e5cb10d',
+    'wx_token'   => 'linkphpcn',
+];
 
-?>
