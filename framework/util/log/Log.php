@@ -47,7 +47,7 @@
              $i = 0;
              $filename = rename($filename,$reslpath . '/' . $data . '-' . $i++  . '.json');
          }
-         error_log("[{$time}] ".$_SERVER['REMOTE_ADDR'].' '.$_SERVER['REQUEST_URI']."\r\n{$message}\r\n", 3,$reslpath . '/' . $filename . '.log');
+         error_log("[{$time}] ".$_SERVER['REMOTE_ADDR'].' '.$_SERVER['REQUEST_URI']."\r\n{$message}\r\n", 3,$logpath . '/' . $filename . '.log');
      }
  }
 
