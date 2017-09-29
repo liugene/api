@@ -25,6 +25,7 @@ class WeiXin
 
        static public function verify()
        {
+           var_dump($_SERVER);die;
            if(isset($_GET['nonce']) && isset($_GET['timestamp']) && isset($_GET['signature']) && isset($_GET['echostr'])){
                //获得参数 signatrue token timestamp echostr
                //先获取到这三个参数
