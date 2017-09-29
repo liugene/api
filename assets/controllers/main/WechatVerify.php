@@ -20,8 +20,11 @@ class WechatVerify
     static public function main()
     {
         Log::save(WeiXin::verify());
-        ob_clean();
-        echo WeiXin::verify();
-        die;
+        WeiXin::verify();
+    }
+
+    static public function create()
+    {
+        echo WeiXin::createMenu();
     }
 }

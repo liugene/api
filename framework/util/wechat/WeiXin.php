@@ -1,6 +1,8 @@
 <?php
 
 namespace util\wechat;
+use linkphp\boot\Configure;
+use util\curl\Curl;
 /**
  * --------------------------------------------------*
  *  LhinkPHP遵循Apache2开源协议发布  Link ALL Thing  *
@@ -36,14 +38,39 @@ class WeiXin{
                //sha1加密，调用sha1函数
                $tmpStr = sha1($tmpStr);
                if($tmpStr == $signature){
-                   return $echostr;
+                   ob_clean();
+                   echo $echostr;
+                   die;
                } else {
-                   return '验证失败!';
+                   echo '验证失败!';
                }
            } else {
-               return '请求缺少必要参数!';
+               echo '请求缺少必要参数!';
            }
        }
+    static public function createMenu()
+    {
+        $token = static::getWxAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $token;
+        $menu = '{
+                   "button":[
+                   {
+                        "type":"click",
+                        "name":"最新文章",
+                        "key":"V1001_TODAY_NEWS"
+                    },
+                    {
+                         "name":"热门",
+                         "sub_button":[
+                          {
+                             "type":"click",
+                             "name":"赞一下我们",
+                             "key":"V1001_GOOD"
+                          }]
+                     }]
+                 }';
+        return Curl::request('post',$url,$menu);
+    }
        public function reponseMsg()
          {
              //1、获取微信推送过来的POST数据(xml格式)
@@ -146,41 +173,15 @@ class WeiXin{
            }
            }
        }
-       public function http_curl()
-       {
-           //获取LinkPHP
-           //1、初始化curl
-           $ch = curl_init();
-           $url = 'http://www.1.com';
-           //2、设置curl的参数
-           curl_setopt($ch,CURLOPT_URL,$url);
-           curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-           //3、采集
-           $output = curl_exec($ch);
-           //4、关闭
-           curl_close($ch);
-       }
-       public function getWxAccessToken()
+       static public function getWxAccessToken()
        {
            //1、请求access_token地址
-           $appid = '';
-           $appsecret = '';
-           $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET';
-           //2、初始化
-           $ch = curl_init();
-           //3、设置参数
-           curl_setopt($ch,CURLOPT_URL,$url);
-           curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-           //4、调用接口
-           $res = curl_exec($ch);
-           //5、关闭curl
-           curl_close($ch);
-           if(curl_errno($ch)){
-               echo curl_error($ch);
-
-           }
+           $appid = Configure::get('wx_token');
+           $appsecret = Configure::get('wx_secret');
+           $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
+           return Curl::request('get',$url);
        }
-       public function getWxserverIp()
+       static public function getWxserverIp()
        {
            $accessToken = "";
            $url = "";
@@ -194,7 +195,7 @@ class WeiXin{
            }
        }
        //获取微信模板消息
-       public function sendTemplateMsg()
+    public function sendTemplateMsg()
        {
            //获取到access_token
            $access_token = $this->getWxAccessToken();

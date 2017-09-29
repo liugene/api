@@ -14,6 +14,7 @@
 
 return [
     'wx_secret'  => 'cf2b03ccbd971297e00d71c02e5cb10d',
-    'wx_token'   => 'linkphpcn',
+    'wx_token'   => 'linkphp',
+    'wx_appid'   => 'wx2adc0db236715051',
 ];
 
