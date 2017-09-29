@@ -140,6 +140,7 @@ class WeiXin
                 $content = '欢迎关注';
                 $template = "";
                 $info = sprintf($template,$toUser,$formUser,$time,$msgType,$content);
+                return $info;
             }
             //扫描带参数二维码时间如果是重扫二维码
             if(strtolower(static::$post_xml->Event) == 'scan'){
@@ -164,6 +165,7 @@ class WeiXin
                 $content = 'LinkPHP是一个开源的轻便框架';
                 $msgType = 'text';
                 $info = sprintf($template,$formUser,$toUser,$time,$content,$msgType);
+                return $info;
 
             }
         }
@@ -184,6 +186,7 @@ class WeiXin
             //$content = '';
             $msgType = 'text';
             $info = sprintf($template,$formUser,$toUser,$time,$content,$msgType);
+            return $info;
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
             if(strtolower(static::$post_xml->Content) == '图文'){
