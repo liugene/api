@@ -54,7 +54,6 @@ class WeiXin{
     static public function createMenu()
     {
         static::getWxAccessToken();
-        var_dump(static::$access_token);die;
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . static::$access_token;
         $menu = '{
                    "button":[
