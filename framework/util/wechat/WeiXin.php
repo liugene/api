@@ -169,7 +169,7 @@ class WeiXin
                 $time = time();
                 $content = 'LinkPHP是一个开源的轻便框架';
                 $msgType = 'text';
-                echo sprintf($template,$toUser,$formUser,$time,$content,$msgType);
+                echo sprintf($template,$toUser,$formUser,$time,$msgType,$content);
             }
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
