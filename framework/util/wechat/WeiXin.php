@@ -120,7 +120,7 @@ class WeiXin
         }
     }
 
-    static public function reponseMsg()
+    static public function responseMsg()
     {
         //判断该数据包是否为订阅的事件推送
         if(strtolower(static::$post_xml->MsgType) == 'event'){

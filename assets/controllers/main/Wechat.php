@@ -21,7 +21,7 @@ class Wechat
     {
         Log::save('');
         WeiXin::receive();
-        WeiXin::reponseMsg();
+        WeiXin::responseMsg();
     }
 
     static public function create()
