@@ -19,7 +19,7 @@ class WechatVerify
 {
     static public function main()
     {
-        Log::save(implode($_GET));
+//        Log::save(implode($_GET));
         Log::save(WeiXin::verify());
         echo WeiXin::verify();
     }
