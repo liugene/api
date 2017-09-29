@@ -70,6 +70,9 @@
    'alidayu_phone_number'  =>  '13879337614',
    'alidayu_sms_id'        =>  'SMS_78400009',
    'alidayu_sms_param'           =>  '',
+     'wx_secret'  => 'cf2b03ccbd971297e00d71c02e5cb10d',
+     'wx_token'   => 'linkphp',
+     'wx_appid'   => 'wx2adc0db236715051',
 
  ];
 
