@@ -78,12 +78,12 @@ class WeiXin
             $tmpStr = sha1($tmpStr);
             if($tmpStr == $signature){
                 static::$isValid = true;
-                return true;
+                return 123;
             } else {
-                return false;
+                return 456;
             }
         } else {
-            return false;
+            return 789;
         }
     }
 
