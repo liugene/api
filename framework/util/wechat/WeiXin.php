@@ -32,10 +32,10 @@ class WeiXin
     static public function receive()
     {
         if($_SERVER["REQUEST_METHOD"] == 'POST'){
+            var_dump($GLOBALS["HTTP_RAW_POST_DATA"]);die;
             if(!static::$isValid){
                 if(static::checkSignature()){
                     $post_xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-                    var_dump($post_xml);die;
                     if(!empty($post_xml)){
                         static::$post_xml = simplexml_load_string($post_xml,'SimpleXMLElement',LIBXML_NOCDATA);
                     } else {
