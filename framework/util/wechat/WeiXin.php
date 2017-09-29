@@ -32,8 +32,8 @@ class WeiXin
     static public function receive()
     {
         if($_SERVER["REQUEST_METHOD"] == 'POST'){
-            var_dump(file_get_contents("php://input"));die;
             if(!static::$isValid){
+                var_dump(static::checkSignature());die;
                 if(static::checkSignature()){
                     $post_xml = file_get_contents("php://input");
                     if(!empty($post_xml)){
