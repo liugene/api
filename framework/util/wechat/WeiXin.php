@@ -176,7 +176,7 @@ class WeiXin{
        static public function getWxAccessToken()
        {
            //1、请求access_token地址
-           $appid = Configure::get('wx_token');
+           $appid = Configure::get('wx_appid');
            $appsecret = Configure::get('wx_secret');
            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
            return Curl::request('get',$url);
