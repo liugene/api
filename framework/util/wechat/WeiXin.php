@@ -32,14 +32,12 @@ class WeiXin
     static public function receive()
     {
         if($_SERVER["REQUEST_METHOD"] == 'POST'){
-            if(!static::$isValid){
-                if(static::checkSignature()){
-                    $post_xml = file_get_contents("php://input");
-                    if(!empty($post_xml)){
-                        static::$post_xml = simplexml_load_string($post_xml,'SimpleXMLElement',LIBXML_NOCDATA);
-                    } else {
-                        static::$post_xml = null;
-                    }
+            if(static::checkSignature()){
+                $post_xml = file_get_contents("php://input");
+                if(!empty($post_xml)){
+                    static::$post_xml = simplexml_load_string($post_xml,'SimpleXMLElement',LIBXML_NOCDATA);
+                } else {
+                    static::$post_xml = null;
                 }
             }
         } else {
