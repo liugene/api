@@ -21,5 +21,6 @@ class WechatVerify
     {
         Log::save(WeiXin::verify());
         echo WeiXin::verify();
+        die;
     }
 }
