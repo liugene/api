@@ -17,57 +17,32 @@ class WeiXin{
 
        static public function verify()
        {
-           //获得参数 signatrue token timestamp echostr
-           //先获取到这三个参数
-           $signature = $_GET['signature'];
-           $nonce = $_GET['nonce'];
-           $timestamp = $_GET['timestamp'];
-           $echostr = $_GET['echostr'];
-           echo $echostr;
+           if(isset($_GET['nonce']) && isset($_GET['timestamp']) && isset($_GET['signature']) && isset($_GET['echostr'])){
+               //获得参数 signatrue token timestamp echostr
+               //先获取到这三个参数
+               $signature = $_GET['signature'];
+               $nonce = $_GET['nonce'];
+               $timestamp = $_GET['timestamp'];
+               $echostr = $_GET['echostr'];
 
-           //把这三个参数存到一个数组里面
-//           $tmpArr = array($timestamp,$nonce,'linkphp');
-//           //进行字典排序
-//           sort($tmpArr);
-//
-//           //把数组中的元素合并成字符串，impode()函数是用来将一个数组合并成字符串的
-//           $tmpStr = implode($tmpArr);
-//
-//           //sha1加密，调用sha1函数
-//           $tmpStr = sha1($tmpStr);
-//           if($tmpStr == $signature){
-//               echo $echostr;
-//               exit;
-//           } else {
-//               exit('验证失败!');
-//           }
-//           if(isset($_GET['nonce']) && isset($_GET['timestamp']) && isset($_GET['signature']) && isset($_GET['echostr'])){
-//               //获得参数 signatrue token timestamp echostr
-//               //先获取到这三个参数
-//               $signature = $_GET['signature'];
-//               $nonce = $_GET['nonce'];
-//               $timestamp = $_GET['timestamp'];
-//               $echostr = $_GET['echostr'];
-//
-//               //把这三个参数存到一个数组里面
-//               $tmpArr = array($timestamp,$nonce,'linkphp');
-//               //进行字典排序
-//               sort($tmpArr);
-//
-//               //把数组中的元素合并成字符串，impode()函数是用来将一个数组合并成字符串的
-//               $tmpStr = implode($tmpArr);
-//
-//               //sha1加密，调用sha1函数
-//               $tmpStr = sha1($tmpStr);
-//               if($tmpStr == $signature){
-//                   echo $echostr;
-//                   exit;
-//               } else {
-//                   exit('验证失败!');
-//               }
-//           } else {
-//               exit('请求缺少必要参数!');
-//           }
+               //把这三个参数存到一个数组里面
+               $tmpArr = array($timestamp,$nonce,'linkphp');
+               //进行字典排序
+               sort($tmpArr);
+
+               //把数组中的元素合并成字符串，impode()函数是用来将一个数组合并成字符串的
+               $tmpStr = implode($tmpArr);
+
+               //sha1加密，调用sha1函数
+               $tmpStr = sha1($tmpStr);
+               if($tmpStr == $signature){
+                   return $echostr;
+               } else {
+                   return '验证失败!';
+               }
+           } else {
+               return '请求缺少必要参数!';
+           }
        }
        public function reponseMsg()
          {

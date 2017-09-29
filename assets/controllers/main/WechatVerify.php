@@ -18,6 +18,6 @@ class WechatVerify
 {
     static public function main()
     {
-        WeiXin::verify();
+        echo WeiXin::verify();
     }
 }
