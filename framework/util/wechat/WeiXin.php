@@ -178,9 +178,9 @@ class WeiXin{
            //1、请求access_token地址
            $appid = Configure::get('wx_appid');
            $appsecret = Configure::get('wx_secret');
-           var_dump($appsecret);die;
            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
-           return Curl::request('get',$url);
+           $token = Curl::request('get',$url);
+           dump($token);die;
        }
        static public function getWxserverIp()
        {
