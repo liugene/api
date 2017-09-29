@@ -186,7 +186,7 @@ class WeiXin
             //$content = '';
             $msgType = 'text';
             $info = sprintf($template,$formUser,$toUser,$time,$content,$msgType);
-            return $info;
+            echo $info;
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
             if(strtolower(static::$post_xml->Content) == '图文'){
