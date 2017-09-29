@@ -15,9 +15,12 @@ use util\curl\Curl;
  * --------------------------------------------------*
  */
 
-class WeiXin{
+class WeiXin
+{
 
+    //保存access_token
     static private $access_token;
+    //保存获取的access_token时间
     static private $time;
 
        static public function verify()
@@ -51,27 +54,10 @@ class WeiXin{
                echo '请求缺少必要参数!';
            }
        }
-    static public function createMenu()
+    static public function createMenu($menu)
     {
         static::getWxAccessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . static::$access_token;
-        $menu = '{
-                   "button":[
-                   {
-                        "type":"click",
-                        "name":"最新文章",
-                        "key":"V1001_TODAY_NEWS"
-                    },
-                    {
-                         "name":"热门",
-                         "sub_button":[
-                          {
-                             "type":"click",
-                             "name":"赞一下我们",
-                             "key":"V1001_GOOD"
-                          }]
-                     }]
-                 }';
         return Curl::request('post',$url,$menu);
     }
        public function reponseMsg()

@@ -15,16 +15,16 @@ namespace assets\controllers\main;
 use util\wechat\WeiXin;
 use util\log\Log;
 
-class WechatVerify
+class Wechat
 {
     static public function main()
     {
-        Log::save(WeiXin::verify());
+        Log::save('');
         WeiXin::verify();
     }
 
     static public function create()
     {
-        echo WeiXin::createMenu();
+        echo WeiXin::createMenu('123');
     }
 }
