@@ -180,7 +180,15 @@ class WeiXin{
        static public function getWxAccessToken()
        {
            //判断是否初次请求
-           if(isset(static::$access_token)){
+           if(!isset(static::$access_token)){
+               //1、请求access_token地址
+               $appid = Configure::get('wx_appid');
+               $appsecret = Configure::get('wx_secret');
+               $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
+               $token = json_decode(Curl::request('get',$url),true);;
+               static::$access_token = $token['access_token'];
+               static::$time = time();
+           } else {
                $now = time();
                if(($now-static::$time)>7200){
                    //1、请求access_token地址
