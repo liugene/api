@@ -17,6 +17,9 @@ use util\curl\Curl;
 
 class WeiXin{
 
+    static private $access_token;
+    static private $time;
+
        static public function verify()
        {
            if(isset($_GET['nonce']) && isset($_GET['timestamp']) && isset($_GET['signature']) && isset($_GET['echostr'])){
@@ -51,7 +54,7 @@ class WeiXin{
     static public function createMenu()
     {
         $token = static::getWxAccessToken();
-        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $token;
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . static::$access_token;
         $menu = '{
                    "button":[
                    {
@@ -175,12 +178,19 @@ class WeiXin{
        }
        static public function getWxAccessToken()
        {
-           //1、请求access_token地址
-           $appid = Configure::get('wx_appid');
-           $appsecret = Configure::get('wx_secret');
-           $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
-           $token = Curl::request('get',$url);
-           dump($token);die;
+           //判断是否初次请求
+           if(isset(static::$access_token)){
+               $now = time();
+               if(($now-static::$time)>7200){
+                   //1、请求access_token地址
+                   $appid = Configure::get('wx_appid');
+                   $appsecret = Configure::get('wx_secret');
+                   $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $appid . '&secret=' . $appsecret . '';
+                   $token = json_decode(Curl::request('get',$url),true);;
+                   static::$access_token = $token['access_token'];
+                   static::$time = time();
+               }
+           }
        }
        static public function getWxserverIp()
        {
