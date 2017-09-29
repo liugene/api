@@ -190,6 +190,7 @@ class WeiXin
             $toUser = static::$post_xml->FormUserName;
             $time = time();
             $msgType = 'text';
+            var_dump(static::$post_xml->FormUserName);die;
             echo sprintf($template,$formUser,$toUser,$time,$content,$msgType);
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
