@@ -38,8 +38,7 @@ class WeiXin{
                if($tmpStr == $signature){
                    return $echostr;
                } else {
-//                   return '验证失败!';
-                   return '加密:' . $tmpStr;
+                   return '验证失败!';
                }
            } else {
                return '请求缺少必要参数!';
