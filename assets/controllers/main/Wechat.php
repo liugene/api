@@ -20,7 +20,8 @@ class Wechat
     static public function main()
     {
         Log::save('');
-        WeiXin::verify();
+        WeiXin::receive();
+        WeiXin::reponseMsg();
     }
 
     static public function create()
