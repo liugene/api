@@ -61,7 +61,7 @@
   'session_on'           => false, //是否开启SESSION机制
 
   //系统常用路径设置
-  'log_path'             => CACHE_PATH  . 'log/', //系统日志存储路径
+  'log_path'             => RUNTIME_PATH  . 'log/', //系统日志存储路径
 
   //第三方平台接口配置
    'alidayu_appkey'        =>  '23470347',
