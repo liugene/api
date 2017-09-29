@@ -156,16 +156,20 @@ class WeiXin
         //接收用户发送过来的信息进行比较然后回复文本内容
         if(strtolower(static::$post_xml->MsgType) == 'text')
         {
-            if(strtolower(static::$post_xml->Content) == 'LinkPHP'){
-                $template = "";
+            if(strtolower(static::$post_xml->Content) == 'linkphp'){
+                $template = "<xml>
+ <ToUserName><![CDATA[%s]]></ToUserName>
+ <FromUserName><![CDATA[%s]]></FromUserName>
+ <CreateTime>%s</CreateTime>
+ <MsgType><![CDATA[%s]]></MsgType>
+ <Content><![CDATA[%s]]></Content>
+ </xml>";
                 $formUser = static::$post_xml->ToUserName;
-                $toUser = static::$post_xml->FormUserName;
+                $toUser = static::$post_xml->FromUserName;
                 $time = time();
                 $content = 'LinkPHP是一个开源的轻便框架';
                 $msgType = 'text';
-                $info = sprintf($template,$formUser,$toUser,$time,$content,$msgType);
-                return $info;
-
+                echo sprintf($template,$toUser,$formUser,$time,$content,$msgType);
             }
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
@@ -225,41 +229,22 @@ class WeiXin
         }
     }
 
-       static public function getWxserverIp()
-       {
-           $accessToken = "";
-           $url = "";
-           $ch = curl_init();
-           curl_setopt($ch,CURL_URL,$url);
-           curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-           $res = curl_exec($ch);
-           curl_close($ch);
-           if(curl_errno($ch)){
-               var_dump(curl_error($ch));
-           }
-       }
+    //获取微信服务器IP地址
+    static public function getWxServerIp()
+    {
+        static::getWxAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=' . static::$access_token;
+        return Curl::request('get',$url);
+    }
        //获取微信模板消息
-    public function sendTemplateMsg()
-       {
-           //获取到access_token
-           $access_token = $this->getWxAccessToken();
-           $url = "";
-           //组装数组
-           $array = array(
-             'touser' => '',
-             'template_id' => '',
-             'url' => '',
-             'data' => array(
-                'name' => array('value' => 'hello','color' => '#000'),
-                'money' => array('value' => 100,'color' => '#000'),
-                'data' => array('value' => date('Y-m-d H:i:s'),'color' => '#000'),
-             ),
-           );
-           //将数组转成json格       式
-           $postJson = json_encode($array);
-           //调用curl函数
-           $this->http_curl();
-
-       }
+    public function sendTemplateMsg($data)
+    {
+        //获取到access_token
+        static::getWxAccessToken();
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" . static::$access_token;
+        //将数组转成json格式
+        $postJson = json_encode($data);
+        return Curl::request('post',$url,$postJson);
+    }
 }
 
