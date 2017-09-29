@@ -13,7 +13,7 @@
  */
 
 return [
-    'wx_secret'  => 'cf2b03ccbd971297e00d71c02e5cb10d',
+    'wx_secret'  => 'dbe7b4caf79377ab1545630cef433acf',
     'wx_token'   => 'linkphp',
     'wx_appid'   => 'wx2adc0db236715051',
 ];
