@@ -35,7 +35,6 @@ class WeiXin{
 
                //sha1加密，调用sha1函数
                $tmpStr = sha1($tmpStr);
-               return $tmpStr . '+++' . $signature;
                if($tmpStr == $signature){
                    return $echostr;
                } else {
