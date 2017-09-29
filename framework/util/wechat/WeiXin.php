@@ -35,6 +35,7 @@ class WeiXin
             if(!static::$isValid){
                 if(static::checkSignature()){
                     $post_xml = $GLOBALS["HTTP_RAW_POST_DATA"];
+                    var_dump($post_xml);die;
                     if(!empty($post_xml)){
                         static::$post_xml = simplexml_load_string($post_xml,'SimpleXMLElement',LIBXML_NOCDATA);
                     } else {
@@ -122,7 +123,6 @@ class WeiXin
 
     static public function responseMsg()
     {
-        var_dump(static::$post_xml);die;
         //判断该数据包是否为订阅的事件推送
         if(strtolower(static::$post_xml->MsgType) == 'event'){
             //如果是关注subscribe事件
