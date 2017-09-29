@@ -128,6 +128,7 @@ class WeiXin
 
     static public function responseMsg()
     {
+        var_dump(static::$post_xml);die;
         //判断该数据包是否为订阅的事件推送
         if(strtolower(static::$post_xml->MsgType) == 'event'){
             //如果是关注subscribe事件
