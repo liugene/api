@@ -131,10 +131,15 @@ class WeiXin
                 $formUser = static::$post_xml->ToUserName;
                 $time = time();
                 $msgType = 'text';
-                $content = '欢迎关注';
-                $template = "";
-                $info = sprintf($template,$toUser,$formUser,$time,$msgType,$content);
-                return $info;
+                $content = '欢迎关注linkphp';
+                $template = "<xml>
+ <ToUserName><![CDATA[%s]]></ToUserName>
+ <FromUserName><![CDATA[%s]]></FromUserName>
+ <CreateTime>%s</CreateTime>
+ <MsgType><![CDATA[%s]]></MsgType>
+ <Content><![CDATA[%s]]></Content>
+ </xml>";
+                echo sprintf($template,$toUser,$formUser,$time,$msgType,$content);
             }
             //扫描带参数二维码时间如果是重扫二维码
             if(strtolower(static::$post_xml->Event) == 'scan'){
