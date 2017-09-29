@@ -170,6 +170,7 @@ class WeiXin
             }
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
+            $content = '';
             switch(trim(static::$post_xml->Content)){
                 case 1:
                     $content = '您输入的数字是1';
@@ -190,7 +191,7 @@ class WeiXin
             $toUser = static::$post_xml->FromUserName;
             $time = time();
             $msgType = 'text';
-            echo sprintf($template,$formUser,$toUser,$time,$content,$msgType);
+            echo sprintf($template,$formUser,$toUser,$time,$msgType,$content);
         }
         if(strtolower(static::$post_xml->MsgType) == 'text'){
             if(strtolower(static::$post_xml->Content) == '图文'){
