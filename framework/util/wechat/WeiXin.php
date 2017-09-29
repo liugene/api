@@ -128,7 +128,6 @@ class WeiXin
 
     static public function responseMsg()
     {
-        var_dump(static::$post_xml);die;
         //判断该数据包是否为订阅的事件推送
         if(strtolower(static::$post_xml->MsgType) == 'event'){
             //如果是关注subscribe事件
@@ -180,7 +179,13 @@ class WeiXin
                     break;
 
             }
-            $template = "";
+            $template = "<xml>
+ <ToUserName><![CDATA[%s]]></ToUserName>
+ <FromUserName><![CDATA[%s]]></FromUserName>
+ <CreateTime>%s</CreateTime>
+ <MsgType><![CDATA[%s]]></MsgType>
+ <Content><![CDATA[%s]]></Content>
+ </xml>";
             $formUser = static::$post_xml->ToUserName;
             $toUser = static::$post_xml->FormUserName;
             $time = time();
