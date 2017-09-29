@@ -38,7 +38,7 @@
          $time = date('c');
          $data = date('Y-m-d');
          $logpath = is_null($path) ? C('log_path') . $data : $path;
-         $reslpath = str_replace('\\','/',$path);
+         $reslpath = str_replace('\\','/',$logpath);
          if(!is_dir($reslpath)){
              mkdir($reslpath,0755,true);
          }
