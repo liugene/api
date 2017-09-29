@@ -13,11 +13,13 @@
 // +----------------------------------------------------------------------
 namespace assets\controllers\main;
 use util\wechat\WeiXin;
+use util\log\Log;
 
 class WechatVerify
 {
     static public function main()
     {
+        Log::save($_GET);
         echo WeiXin::verify();
     }
 }
