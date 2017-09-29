@@ -33,7 +33,12 @@ class WeiXin
     {
         if($_SERVER["REQUEST_METHOD"] == 'POST'){
             if(!static::$isValid){
-                var_dump(static::checkSignature());die;
+                $post_xml = file_get_contents("php://input");
+                if(!empty($post_xml)){
+                    static::$post_xml = simplexml_load_string($post_xml,'SimpleXMLElement',LIBXML_NOCDATA);
+                } else {
+                    static::$post_xml = null;
+                }
                 if(static::checkSignature()){
                     $post_xml = file_get_contents("php://input");
                     if(!empty($post_xml)){
@@ -78,12 +83,12 @@ class WeiXin
             $tmpStr = sha1($tmpStr);
             if($tmpStr == $signature){
                 static::$isValid = true;
-                return 123;
+                return true;
             } else {
-                return 456;
+                return false;
             }
         } else {
-            return 789;
+            return false;
         }
     }
 
