@@ -19,7 +19,7 @@ class WechatVerify
 {
     static public function main()
     {
-        Log::save($_GET);
+        Log::save($_GET['nonce'].$_GET['timestamp'].$_GET['signature'].$_GET['echostr']);
         echo WeiXin::verify();
     }
 }
