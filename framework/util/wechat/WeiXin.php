@@ -127,8 +127,8 @@ class WeiXin
             //如果是关注subscribe事件
             if(strtolower(static::$post_xml->Event) == 'subscribe'){
                 //回复用户消息
-                $toUser = static::$post_xml->FormUserName;
                 $formUser = static::$post_xml->ToUserName;
+                $toUser = static::$post_xml->FromUserName;
                 $time = time();
                 $msgType = 'text';
                 $content = '欢迎关注linkphp';
