@@ -50,7 +50,6 @@ class Blog
             echo json_encode(['code' => 2, 'msg' => '帖子内容不能为空!'], JSON_UNESCAPED_UNICODE);
             die;
         }
-        var_dump(BlogData::pushData());die;
         if(BlogData::pushData()){
             echo json_encode(['code' => 1, 'msg' => '发布成功!'], JSON_UNESCAPED_UNICODE);
         } else {
