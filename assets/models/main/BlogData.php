@@ -41,7 +41,7 @@ class BlogData
             $data['post_time'] = date('Y-m-d H:i:s',time());
             $data['content'] = $_POST['desc'];
             $data['pic_url'] = '/resource/static/main/img/mysql.png';
-            return Db::table('lp_content')
+            return Db::table('lp_blog')
                 ->insert($data);
         } catch (Exception $e) {
             return $e->getMessage();
