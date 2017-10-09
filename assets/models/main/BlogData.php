@@ -13,6 +13,7 @@
 // +----------------------------------------------------------------------
 namespace assets\models\main;
 use util\db\Db;
+use linkphp\boot\Exception;
 
 class BlogData
 {
@@ -30,5 +31,20 @@ class BlogData
             ->field('*')
             ->where('where is_on = 0')
             ->select();
+    }
+
+    static public function pushData()
+    {
+        try{
+            $data['title'] = $_POST['title'];
+            $data['u_id'] = 1;
+            $data['post_time'] = date('Y-m-d H:i:s',time());
+            $data['content'] = $_POST['desc'];
+            $data['pic_url'] = '/resource/static/main/img/mysql.png';
+            return Db::table('lp_content')
+                ->insert($data);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

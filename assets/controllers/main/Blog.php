@@ -35,4 +35,26 @@ class Blog
         }
     }
 
+    //博客发布
+    static public function push()
+    {
+        if(!$_POST){
+            echo json_encode(['code' => 2, 'msg' => '非法提交!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
+        if($_POST['title'] == ''){
+            echo json_encode(['code' => 2, 'msg' => '帖子标题不能为空!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
+        if($_POST['desc'] == ''){
+            echo json_encode(['code' => 2, 'msg' => '帖子内容不能为空!'], JSON_UNESCAPED_UNICODE);
+            die;
+        }
+        if(BlogData::pushData()){
+            echo json_encode(['code' => 1, 'msg' => '发布成功!'], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(['code' => 2, 'msg' => '发布失败!'], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
 }
