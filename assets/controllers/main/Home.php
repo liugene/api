@@ -7,14 +7,14 @@ class Home
 {
 	public function main()
     {
-        var_dump($_SERVER);
-        $data = ['user_id' => 1, 'email' => '750688237@qq.com'];
-        $key = '123';
-        var_dump(Jwt::sign($data,$key));
-        var_dump(Jwt::arrays(Jwt::parse(Jwt::sign($data,$key))['payload']));
-        var_dump(Jwt::parse(Jwt::sign($data,$key)));
-        var_dump(Jwt::verify(Jwt::parse(Jwt::sign($data,$key)),$key));
-//        phpinfo();
+//        var_dump($_SERVER);
+//        $data = ['user_id' => 1, 'email' => '750688237@qq.com'];
+//        $key = '123';
+//        var_dump(Jwt::sign($data,$key));
+//        var_dump(Jwt::arrays(Jwt::parse(Jwt::sign($data,$key))['payload']));
+//        var_dump(Jwt::parse(Jwt::sign($data,$key)));
+//        var_dump(Jwt::verify(Jwt::parse(Jwt::sign($data,$key)),$key));
+        phpinfo();
     }
 
     static public function getItems()
